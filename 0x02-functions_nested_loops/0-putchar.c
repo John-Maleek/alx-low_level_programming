@@ -1,4 +1,4 @@
-#include <main.h>
+#include "hafeez.h"
 
 /**
  * main- prints _putchar
