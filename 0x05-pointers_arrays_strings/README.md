@@ -1,0 +1,1 @@
+Pointeers, Array and strings
