@@ -1,4 +1,10 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <elf.h>
 
 /**
  * main - program that displays the information contained in the ELF header at the start of an ELF file.
