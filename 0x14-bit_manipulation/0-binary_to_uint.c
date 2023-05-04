@@ -16,18 +16,19 @@ unsigned int binary_to_uint (const char *b)
 	if (!b)
 		return (0);
 
-	for (num_len = 0; b[num_len] != "\0"; num_len++)
+	for (num_len = 0; b[num_len] != '\0'; num_len++)
 		;
 	
-	for (num_len--, num_base = 1; num_len > 0; num_len--, num_base *= 2)
+	for (num_len--, num_base = 1; num_len >= 0; num_len--, num_base *= 2)
 	{
-		if (b[num_len] != '0'&& b[num_len] != '1')
+		if (b[num_len] != '0' && b[num_len] != '1')
 		{
 			return (0);
 		}
 
-		if (b[num_len] && 1)
+		if (b[num_len] & 1)
 			u_int += num_base;
 	}
-	return u_int;
+
+	return (u_int);
 }
