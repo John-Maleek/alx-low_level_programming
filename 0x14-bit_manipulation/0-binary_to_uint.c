@@ -11,7 +11,7 @@ unsigned int binary_to_uint (const char *b)
 	unsigned int u_int;
 	int num_len, num_base;
 
-	u_int = 0
+	u_int = 0;
 
 	if (!b)
 		return (0);
