@@ -27,7 +27,9 @@ unsigned int binary_to_uint (const char *b)
 		}
 
 		if (b[num_len] & 1)
+		{
 			u_int += num_base;
+		}
 	}
 
 	return (u_int);
