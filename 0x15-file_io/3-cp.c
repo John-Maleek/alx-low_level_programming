@@ -12,17 +12,16 @@ void file_error(int err_num, char *filename)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	else if (err_num == 99)
+	if (err_num == 99)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 		exit(99);
 	}
-	else if (err_num == 100)
+	if (err_num == 100)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", filename);
 		exit(100);
 	}
-
 }
 
 /**
