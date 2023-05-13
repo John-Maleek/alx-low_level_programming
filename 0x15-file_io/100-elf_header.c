@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * check_elf - check if it is an elf file.
+ * print_data - prints data
  * @ptr: magic.
- * Return: 1 if it is an elf file. 0 if not.
+ * Return: void
  */
-
 void print_data(char *ptr)
 {
 	char data = ptr[5];
@@ -18,6 +17,11 @@ void print_data(char *ptr)
 		printf(", big endian\n");
 }
 
+/**
+ * print_ver - prints the version
+ * @ptr: magic.
+ * Return: void
+ */
 void print_ver(char *ptr)
 {
 	int version = ptr[6];
@@ -30,6 +34,11 @@ void print_ver(char *ptr)
 	printf("\n");
 }
 
+/**
+ * print_typ - print type
+ * @ptr: magic.
+ * Return: void
+ */
 void print_typ(char *ptr)
 {
 	char type = ptr[16];
@@ -54,6 +63,11 @@ void print_typ(char *ptr)
 		printf("<unknown: %x>\n", type);
 }
 
+/**
+ * print_addr - prints address
+ * @ptr: magic.
+ * Return: no return.
+ */
 void print_adr(char *ptr)
 {
 	int i, begin;
@@ -93,7 +107,12 @@ void print_adr(char *ptr)
 	printf("\n");
 }
 
-void print_os_abi(char *ptr)
+/**
+ * _osabi - prints OS/ABI
+ * @ptr: magic.
+ * Return: void
+ */
+void _osabi(char *ptr)
 {
 	char osabi = ptr[7];
 
@@ -110,6 +129,11 @@ void print_os_abi(char *ptr)
 	printf("  ABI Version:                       %d\n", ptr[8]);
 }
 
+/**
+ * print_magic - prints magic info.
+ * @ptr: magic.
+ * Return: void
+ */
 void print_magic(char *ptr)
 {
 	int bytes;
@@ -123,6 +147,11 @@ void print_magic(char *ptr)
 
 }
 
+/**
+ * check_syst - checks the system version.
+ * @ptr: magic.
+ * Return: void
+ */
 void check_syst(char *ptr)
 {
 	char sys = ptr[4] + '0';
@@ -140,35 +169,37 @@ void check_syst(char *ptr)
 		printf("  Class:                             ELF64\n");
 
 	print_ver(ptr);
-	print_os_abi(ptr);
+	_osabi(ptr);
 	print_typ(ptr);
 	print_data(ptr);
 	print_adr(ptr);
 }
 
-void check_syst(char *ptr)
+/**
+ * _elf - check if file is an elf or not
+ * @ptr: magic.
+ * Return: 1 if it is an elf file. 0 if not.
+ */
+int _elf(char *ptr)
 {
-	char sys = ptr[4] + '0';
+	int addr = (int)ptr[0];
+	char E, L, F;
+	E = ptr[1];
+	L = ptr[2];
+	F = ptr[3];
 
-	if (sys == '0')
-		exit(98);
+	if (addr == 127 && E == 'E' && L == 'L' && F == 'F')
+		return (1);
 
-	printf("ELF Header:\n");
-	print_magic(ptr);
-
-	if (sys == '1')
-		printf("  Class:                             ELF32\n");
-
-	if (sys == '2')
-		printf("  Class:                             ELF64\n");
-
-	print_ver(ptr);
-	print_os_abi(ptr);
-	print_typ(ptr);
-	print_data(ptr);
-	print_adr(ptr);
+	return (0);
 }
 
+/**
+ * main - check the code for an elf file
+ * @argc: number of arguments.
+ * @argv: arguments vector.
+ * Return: Always 0.
+ */
 int main(int argc, char *argv[])
 {
 	int fd, ret_read;
