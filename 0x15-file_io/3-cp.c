@@ -1,10 +1,13 @@
 #include "main.h"
 
 /**
- *file_error: prints appropriate error message
- *when there is an error reading or writing to a file
- *
+ * file_error - prints appropriate error message
+ * when there is an error reading or writing to a file
+ * @filename: File name
+ * @err_num: error  number
+ * Return: void
  */
+
 void file_error(int err_num, char *filename)
 {
 	if (err_num == 98)
@@ -19,14 +22,16 @@ void file_error(int err_num, char *filename)
 	}
 	if (err_num == 100)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", filename);
 		exit(100);
 	}
 }
 
 /**
- *copy_file: copies the content of a file to another
- *
+ * copy_file - copies the content of a file to another
+ * @file_from: file to read from
+ * @file_to: file to read to
+ * Return: void
  */
 
 void copy_file(char *file_from, char *file_to)
@@ -61,7 +66,6 @@ void copy_file(char *file_from, char *file_to)
 	close(file_write);
 	if (close(file_write) < 0)
 		file_error(100, file_to);
-
 }
 
 int main(int argc, char *argv[])
