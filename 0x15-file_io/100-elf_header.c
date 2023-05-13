@@ -166,7 +166,7 @@ void check_syst(char *ptr)
 
 	if (sys == '2')
 		printf("  Class:                             ELF64\n");
-	
+
 	print_data(ptr);
 	print_ver(ptr);
 	_osabi(ptr);
@@ -183,7 +183,7 @@ int _elf(char *ptr)
 {
 	int addr = (int)ptr[0];
 	char E, L, F;
-	
+
 	E = ptr[1];
 	L = ptr[2];
 	F = ptr[3];
