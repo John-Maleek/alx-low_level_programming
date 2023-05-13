@@ -101,7 +101,6 @@ void print_adr(char *ptr)
 
 			else if (ptr[i] < 0)
 				printf("%02x", 256 + ptr[i]);
-
 		}
 	}
 	printf("\n");
@@ -228,7 +227,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (!check_elf(ptr))
+	if (!_elf(ptr))
 	{
 		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
 		exit(98);
