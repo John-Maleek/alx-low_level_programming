@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /*
@@ -21,4 +22,6 @@ void print_binary(unsigned long int n)
 	{
 		printf("%d", (n >> 1) & 1);
 	}
+
+	return (0);
 }
