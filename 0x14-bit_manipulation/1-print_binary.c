@@ -18,9 +18,9 @@ void print_binary(unsigned long int n)
 		return (0);
 	}
 
-	for (i; i >= 0; i--)
+	for (; i >= 0; i--)
 	{
-		printf("%d", (n >> 1) & 1);
+		printf("%d", (n >> i) & 1);
 	}
 
 	return (0);

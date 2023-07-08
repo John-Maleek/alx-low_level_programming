@@ -9,7 +9,7 @@
 
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	int range = sizeof(unsigned long int) * 8;
+	unsigned int range = sizeof(unsigned long int) * 8;
 
 	if (index >= range)
 	{

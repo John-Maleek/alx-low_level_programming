@@ -11,8 +11,8 @@
 int get_bit(unsigned long int n, unsigned int index)
 {
 	int value;
-	int shift_num;
-	int range = sizeof(unsigned long int) * 8;
+	unsigned long int shift_num;
+	unsigned long int range = sizeof(unsigned long int) * 8;
 
 	if  (index >= range)
 	{
