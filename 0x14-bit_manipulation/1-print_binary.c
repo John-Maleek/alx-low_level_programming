@@ -22,6 +22,4 @@ void print_binary(unsigned long int n)
 	{
 		printf("%d", (n >> i) & 1);
 	}
-
-	return (0);
 }
