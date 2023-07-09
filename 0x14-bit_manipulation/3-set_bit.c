@@ -17,7 +17,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 		return (-1);
 	}
 
-	int shift = 1 << index; 
+	unsigned long int shift = 1UL << index; 
 
 	*n |= shift;
 

@@ -9,17 +9,18 @@
 
 void print_binary(unsigned long int n)
 {
-	int i;
-	i = sizeof(unsigned long int) * 8 - 1;
+	unsigned long int shift;
+	int range;
+	
+	shift = 1UL << (sizeof(unsigned long int) * 8 - 1);
+	range = sizeof(unsigned long int) * 8;
 
-	if (n == 0)
+	for (int i = 0; i < range; i++)
 	{
-		printf("0");
-		return (0);
-	}
+		unsigned  long int binary = (n & shift) >> (range - 1);
 
-	for (; i >= 0; i--)
-	{
-		printf("%d", (n >> i) & 1);
+		printf("%lu", binary);
+
+		shift >> 1;
 	}
 }
