@@ -8,11 +8,10 @@
  *Return: the actual number of letters it could read and print
  */
 
-ssize_t read_textfile(const char *filename, size_t letters)
+ssize_t read_textfile(const char *filename, size_t letters)	
 {
-	int fd;
 	char *buff;
-	int read_res, write_res;
+	int fd, read_res, write_res;
 
 	if (filename == NULL)
 	{
@@ -20,21 +19,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	fd = open(filename, O_RDONLY);
-
 	if (fd == -1)
 	{
 		return (0);
 	}
 
 	buff = malloc(sizeof(char) * letters);
-
 	if (buff == NULL)
 	{
 		return (0);
 	}
 
 	read_res = read(fd, buff, letters);
-
 	if (read_res == -1)
 	{
 		free(buff);
@@ -43,7 +39,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	write_res = write(STDOUT_FILENO, buff, read_res);
-
 	if (write_res == -1)
 	{
 		free(buff);
