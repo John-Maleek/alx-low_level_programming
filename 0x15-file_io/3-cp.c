@@ -23,7 +23,7 @@ int copy_file(int argc, char **argv)
 	}
 
 	fd_read = open(argv[1], O_RDONLY);
-	fd_write = open(argv[2], O_WRONLY | O_TRUNC | O_CREATE, 0664);
+	fd_write = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 
 	if (fd_read == -1)
 	{
