@@ -2,7 +2,7 @@
 #define BUFFER 1024
 
 /**
- * copy_file - a function that copies the content of a file
+ * main - a function that copies the content of a file
  * to another
  *
  *@argc: number of arguments
@@ -11,7 +11,7 @@
  *Return: 0 Always
  */
 
-int copy_file(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int fd_read, fd_write, read_res, write_res;
 	char *buff;
