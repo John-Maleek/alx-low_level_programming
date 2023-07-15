@@ -38,23 +38,26 @@ int main(int argc, char **argv)
 	}
 
 	buff = malloc(sizeof(char) * BUFFER_SIZE);
-	read_res = read(fd_read, buff, BUFFER_SIZE);
-	if (read_res == -1)
-	{
-		free(buff);
-		close_file(fd_read);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 
-	write_res = write(fd_write, buff, read_res);
-	if (write_res == -1)
-	{
-		free(buff);
-		close_file(fd_write);
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	do {
+		read_res = read(fd_read, buff, BUFFER_SIZE);
+		if (read_res == -1)
+		{
+			free(buff);
+			close_file(fd_read);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+			break;
+		}
+		write_res = write(fd_write, buff, read_res);
+		if (write_res == -1)
+		{
+			free(buff);
+			close_file(fd_write);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
+	} while (write_res > BUFFER_SIZE);
 
 	free(buff);
 	close_file(fd_read);
