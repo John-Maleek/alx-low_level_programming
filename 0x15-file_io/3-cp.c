@@ -70,7 +70,7 @@ int main(int argc, char **argv)
  *Return:
  */
 
-void close_file(int *file)
+void close_file(int file)
 {
 	int res;
 
@@ -78,6 +78,6 @@ void close_file(int *file)
 	if (res == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file);
-		extit(100);
+		exit(100);
 	}
 }
