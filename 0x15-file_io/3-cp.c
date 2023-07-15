@@ -1,5 +1,5 @@
 #include "main.h"
-#define BUFFER 1024
+#define BUFFER_SIZE 1024
 
 /**
  * main - a function that copies the content of a file
@@ -37,8 +37,8 @@ int main(int argc, char **argv)
 		exit(99);
 	}
 
-	buff = malloc(sizeof(char) * BUFFER);
-	read_res = read(fd_read, buff, BUFFER);
+	buff = malloc(sizeof(char) * BUFFER_SIZE);
+	read_res = read(fd_read, buff, BUFFER_SIZE);
 	if (read_res == -1)
 	{
 		free(buff);
@@ -57,8 +57,8 @@ int main(int argc, char **argv)
 	}
 
 	free(buff);
-	close(fd_read);
-	close(fd_write);
+	close_file(fd_read);
+	close_file(fd_write);
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
  *Return:
  */
 
-void close_file(int file)
+void close_file(int *file)
 {
 	int res;
 
